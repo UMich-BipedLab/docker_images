@@ -1,3 +1,5 @@
+container_name=$1
+
 xhost +local:
 docker run -it --net=host --runtime=nvidia \
   --user=$(id -u) \
@@ -13,5 +15,5 @@ docker run -it --net=host --runtime=nvidia \
   -v "/etc/sudoers.d:/etc/sudoers.d:ro" \
   -v "/home/$USER/:/home/$USER/" \
   --device=/dev/dri:/dev/dri \
-  --name=cuda-9.0 \
+  --name=${container_name} \
   umrobotics/semantic_mapping:latest
