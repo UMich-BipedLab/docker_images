@@ -8,4 +8,4 @@ Then to build the docker image so that you can run it, type `docker build --tag 
 
 
 ### How to run this docker file?
-`bash run_cuda_docker.bash`
+`bash run_cuda_docker.bash [container_name]`
