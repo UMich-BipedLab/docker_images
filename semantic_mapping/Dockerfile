@@ -34,6 +34,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         libtool \
         mlocate \
         zlib1g-dev \
+        libopenblas-dev \
         emacs && \
     rm -rf /var/lib/apt/lists/*
 
