@@ -26,6 +26,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         cmake \
         mesa-utils \
         vim \ 
+        build-essential \
+        unzip \
+        autoconf \
+        autogen \
+        automake \
+        libtool \
+        mlocate \
+        zlib1g-dev \
         emacs && \
     rm -rf /var/lib/apt/lists/*
 
