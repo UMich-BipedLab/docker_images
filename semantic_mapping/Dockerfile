@@ -4,7 +4,7 @@ FROM nvidia/cuda:9.0-cudnn7-devel
 # author
 MAINTAINER Ray Zhang
 
-LABEL version="0.2"
+LABEL version="0.3"
 LABEL description="Semantic mapping docker file"
 
 # optional, if the default user is not "root", you might need to switch to root here and at the end of the script to the original user again.
@@ -35,6 +35,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         mlocate \
         zlib1g-dev \
         libopenblas-dev \
+        libqt4-dev \
+        libflann-dev \
+         libusb-1.0-0-dev \
+         libgtest-dev \
+         pkg-config \
+         libvtk6-dev \
+         libboost-all-dev \
         emacs && \
     rm -rf /var/lib/apt/lists/*
 
