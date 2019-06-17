@@ -4,7 +4,7 @@ FROM nvidia/cuda:9.0-cudnn7-devel
 # author
 MAINTAINER Ray Zhang
 
-LABEL version="0.3"
+LABEL version="0.4"
 LABEL description="Semantic mapping docker file"
 
 # optional, if the default user is not "root", you might need to switch to root here and at the end of the script to the original user again.
