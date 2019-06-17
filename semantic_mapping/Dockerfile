@@ -71,6 +71,8 @@ RUN apt-get update
 
 RUN apt-get install ros-kinetic-desktop-full
 
+RUN pip install tensorflow-gpu-1.8.0
+
 # nvidia-container-runtime
 ENV NVIDIA_VISIBLE_DEVICES \
     ${NVIDIA_VISIBLE_DEVICES:-all}
