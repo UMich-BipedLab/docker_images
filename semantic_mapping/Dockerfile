@@ -42,6 +42,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
          pkg-config \
          libvtk6-dev \
          libboost-all-dev \
+         python-pip \
         emacs && \
     rm -rf /var/lib/apt/lists/*
 
@@ -61,6 +62,14 @@ RUN echo '/usr/local/lib/x86_64-linux-gnu' >> /etc/ld.so.conf.d/glvnd.conf && \
     ldconfig && \
     echo '/usr/local/$LIB/libGL.so.1' >> /etc/ld.so.preload && \
     echo '/usr/local/$LIB/libEGL.so.1' >> /etc/ld.so.preload
+
+RUN sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+
+RUN apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
+
+RUN apt-get update
+
+RUN apt-get install ros-kinetic-desktop-full
 
 # nvidia-container-runtime
 ENV NVIDIA_VISIBLE_DEVICES \
