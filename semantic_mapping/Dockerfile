@@ -69,7 +69,7 @@ RUN apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E
 
 RUN apt-get update
 
-RUN apt-get install ros-kinetic-desktop-full
+RUN apt-get install -y --no-install-recommends ros-kinetic-desktop-full
 
 RUN pip install tensorflow-gpu-1.8.0
 
