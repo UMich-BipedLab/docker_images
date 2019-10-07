@@ -15,6 +15,5 @@ docker run -it --net=host --runtime=nvidia \
   -v "/etc/sudoers.d:/etc/sudoers.d:ro" \
   -v "/home/$USER/:/home/$USER/" \
   --device=/dev/dri:/dev/dri \
-  --net=host \
   --name=${container_name} \
   umrobotics/semantic_mapping_melodic:latest
