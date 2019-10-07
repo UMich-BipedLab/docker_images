@@ -4,7 +4,7 @@ FROM nvidia/cuda:9.0-cudnn7-devel
 # author
 MAINTAINER Ray Zhang
 
-LABEL version="0.3"
+LABEL version="0.4"
 LABEL description="Semantic mapping docker file"
 
 # optional, if the default user is not "root", you might need to switch to root here and at the end of the script to the original user again.
@@ -42,6 +42,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
          pkg-config \
          libvtk6-dev \
          libboost-all-dev \
+         python-pip \
         emacs && \
     rm -rf /var/lib/apt/lists/*
 
@@ -61,6 +62,16 @@ RUN echo '/usr/local/lib/x86_64-linux-gnu' >> /etc/ld.so.conf.d/glvnd.conf && \
     ldconfig && \
     echo '/usr/local/$LIB/libGL.so.1' >> /etc/ld.so.preload && \
     echo '/usr/local/$LIB/libEGL.so.1' >> /etc/ld.so.preload
+
+RUN sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+
+RUN apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
+
+RUN apt-get update
+
+RUN apt-get install -y --no-install-recommends ros-kinetic-desktop-full
+
+RUN pip install tensorflow-gpu-1.8.0
 
 # nvidia-container-runtime
 ENV NVIDIA_VISIBLE_DEVICES \

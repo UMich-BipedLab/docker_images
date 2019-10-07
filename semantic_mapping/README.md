@@ -1,5 +1,5 @@
 ## Semantic Mapping
-This docker file sets up the environment for semantic mapping. It aims at installing all non-conflicting related softwares, and encourages download-and-run.
+This docker file sets up the environment for semantic mapping on Ubuntu16.04, and Ros Kinetic. It aims at installing all non-conflicting related softwares, and encourages download-and-run.
 
 
 ### How to build the docker image from `Dockerfile`?
