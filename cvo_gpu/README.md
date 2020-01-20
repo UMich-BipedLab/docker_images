@@ -8,5 +8,5 @@ To build the docker image, run `docker build --tag umrobotics/cuda_arch  . `
 
 If you want to make any changes to this docker image, edit the `Dockerfile`. If any changes happends, remember to update the `LABEL version` inside. 
 
-### How to run this docker file?
+### How to run this docker container?
 `bash run_cuda_docker.bash [container_name]`
