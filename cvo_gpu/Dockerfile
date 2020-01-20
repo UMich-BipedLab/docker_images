@@ -5,7 +5,7 @@ FROM nvidia/cuda:10.2-cudnn7-devel
 MAINTAINER Ray Zhang
 
 LABEL version="0.7"
-LABEL description="On Arch Linux: Melodic ROS Semantic mapping docker file"
+LABEL description="Docker file: for setting up CVO-GPU"
 
 # optional, if the default user is not "root", you might need to switch to root here and at the end of the script to the original user again.
 # e.g.
