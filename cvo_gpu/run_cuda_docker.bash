@@ -1,7 +1,7 @@
 container_name=$1
 
 xhost +local:
-docker run -it --net=host  \
+docker run -it --net=host --gpus all \
   --user=$(id -u) \
   -e DISPLAY=$DISPLAY \
   -e QT_GRAPHICSSYSTEM=native \

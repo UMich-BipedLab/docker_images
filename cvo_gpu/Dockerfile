@@ -59,6 +59,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
          libgtest-dev \
          pkg-config \
          cmake-curses-gui \
+         gdb \
+         clang \
          emacs && \
     apt clean  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* 
 
