@@ -1,5 +1,5 @@
 ## CVO
-This docker file sets up the environment for CVO. It aims at installing all non-conflicting related softwares, and encourages download-and-run.
+This docker file sets up the environment for CVO. It aims at installing all non-conflicting related softwares, and encourages download-and-run. We use Nvidia-Docker 2
 
 
 ### How to build the docker image from `Dockerfile`?
