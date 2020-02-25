@@ -4,7 +4,7 @@ FROM nvidia/cuda:10.2-cudnn7-devel
 # author
 MAINTAINER Ray Zhang
 
-LABEL version="0.7"
+LABEL version="1.0"
 LABEL description="Docker file: for setting up CVO-GPU"
 
 # optional, if the default user is not "root", you might need to switch to root here and at the end of the script to the original user again.
@@ -62,6 +62,42 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
          emacs && \
     apt clean  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* 
 
+######## Install Eigen 3.3.7
+RUN  mkdir -p /home/root/tmp/ \
+&&   wget http://bitbucket.org/eigen/eigen/get/3.3.7.tar.bz2 \
+&&   tar -xf 3.3.7.tar.bz2  && rm 3.3.7.tar.bz2 \
+&&   mv eigen-eigen-323c052e1731 /home/root/tmp/eigen-3.3.7 \
+&&   cd /home/root/tmp/eigen-3.3.7  \
+&&   mkdir build && cd build && cmake .. && make -j && make install
+
+######## Install sophus
+RUN  mkdir -p /home/root/tmp/ \
+&&   wget https://github.com/strasdat/Sophus/archive/v1.0.0.tar.gz \
+&&   tar -xf v1.0.0.tar.gz  \
+&&   mv Sophus-1.0.0 /home/root/tmp/Sophus-1.0.0 \
+&&   cd /home/root/tmp/Sophus-1.0.0 \
+&&   mkdir build && cd build && cmake .. && make -j && make install
+
+########### Install gtsam
+RUN cd /home/root/tmp/ \
+&& git clone https://github.com/borglab/gtsam.git \
+&& cd gtsam \
+&& mkdir build && cd build && cmake .. && make -j && make install
+
+########### Install pcl-1.9.1
+RUN cd /home/root/tmp/ \
+&& wget https://github.com/PointCloudLibrary/pcl/archive/pcl-1.9.1.tar.gz \
+&& tar -xf pcl-1.9.1.tar.gz && rm pcl-1.9.1.tar.gz \
+&& mv pcl-pcl-1.9.1 pcl-1.9.1  \
+&& mkdir -p pcl-1.9.1/build
+
+COPY  boost.h  /home/root/tmp/pcl-1.9.1/io/include/pcl/io/boost.h
+
+RUN cd /home/root/tmp/pcl-1.9.1/build && cmake .. && make -j && make install
+
+RUN rm -rf /home/root/tmp/*
+#
+#
 #RUN sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
 
 #RUN apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
