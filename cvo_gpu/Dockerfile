@@ -64,9 +64,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 ######## Install Eigen 3.3.7
 RUN  mkdir -p /home/root/tmp/ \
-&&   wget http://bitbucket.org/eigen/eigen/get/3.3.7.tar.bz2 \
+&&   wget https://gitlab.com/libeigen/eigen/-/archive/3.3.7/eigen-3.3.7.tar.bz2 \
+&&   mv eigen-3.3.7.tar.bz2 3.3.7.tar.bz2 \
 &&   tar -xf 3.3.7.tar.bz2  && rm 3.3.7.tar.bz2 \
-&&   mv eigen-eigen-323c052e1731 /home/root/tmp/eigen-3.3.7 \
 &&   cd /home/root/tmp/eigen-3.3.7  \
 &&   mkdir build && cd build && cmake .. && make -j && make install
 
