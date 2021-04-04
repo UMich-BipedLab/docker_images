@@ -54,9 +54,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         libpcl-dev \
         libboost-all-dev \
         libsuitesparse-dev \
+        libatlas-base-dev \
         libtbb-dev \
          libusb-1.0-0-dev \
          libgtest-dev \
+        libgoogle-glog-dev \
          pkg-config \
          cmake-curses-gui \
          gdb \
@@ -81,10 +83,15 @@ RUN  mkdir -p /home/root/tmp/ \
 &&   mkdir build && cd build && cmake .. && make -j && make install
 
 ########### Install gtsam
-RUN cd /home/root/tmp/ \
-&& git clone https://github.com/borglab/gtsam.git \
-&& cd gtsam \
-&& mkdir build && cd build && cmake .. && make -j4 && make install
+#RUN cd /home/root/tmp/ \
+#&& git clone https://github.com/borglab/gtsam.git \
+#&& cd gtsam \
+#&& mkdir build && cd build && cmake .. && make -j4 && make install
+
+########### Install ceres
+RUN cd /home/root/tmp \
+&& git clone https://ceres-solver.googlesource.com/ceres-solver \
+&& cd ceres-solver && mkdir build && cd build && cmake .. && make -j4 && make install 
 
 ########### Install pcl-1.9.1
 RUN cd /home/root/tmp/ \
