@@ -60,6 +60,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
          libgtest-dev \
         libgoogle-glog-dev \
          pkg-config \
+         software-properties-common \
          cmake-curses-gui \
          gdb \
          clang \
@@ -90,8 +91,9 @@ RUN  mkdir -p /home/root/tmp/ \
 
 ########### Install ceres
 RUN cd /home/root/tmp \
-&& git clone https://ceres-solver.googlesource.com/ceres-solver \
-&& cd ceres-solver && mkdir build && cd build && cmake .. && make -j4 && make install 
+&& wget http://ceres-solver.org/ceres-solver-2.0.0.tar.gz \
+&& tar zxf ceres-solver-2.0.0.tar.gz && mkdir ceres-bin && cmake ../ceres-solver-2.0.0 \
+&&  make -j4 && make install 
 
 ########### Install pcl-1.9.1
 RUN cd /home/root/tmp/ \
