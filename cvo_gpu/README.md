@@ -21,3 +21,6 @@ If you want to make any changes to this docker image, edit the `Dockerfile`. If 
 `docker ps -a` --> Find you old container name 
 
 `docker start [container_name]`  --> start the old container
+
+### Note
+If you want use GUI, you can try `xhost local:root` before running `docker exec -it [container_name] /bin/bash`
